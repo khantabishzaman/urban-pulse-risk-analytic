@@ -1,0 +1,26 @@
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment Variables
+.env
+.env.local
+
+# Logs
+*.log
