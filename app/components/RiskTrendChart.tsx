@@ -12,15 +12,22 @@ import {
 } from "recharts";
 
 export default function RiskTrendChart({ data }: any) {
-  const districts = [...new Set(data.map((d: any) => d.district))];
+  const districts = [
+  ...new Set<string>(
+    data.map((d: any) => d.district)
+  ),
+];
 
-  const years = [...new Set(data.map((d: any) => d.year))]
-    .sort();
+const years = [
+  ...new Set<number>(
+    data.map((d: any) => d.year)
+  ),
+].sort((a, b) => a - b);
 
-  const chartData = years.map((year) => {
+  const chartData: any[] = years.map((year: number) => {
     const row: any = { year };
 
-    districts.forEach((district) => {
+    districts.forEach((district: string) => {
       const found = data.find(
         (d: any) =>
           d.year === year &&
