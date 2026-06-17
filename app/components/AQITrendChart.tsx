@@ -10,16 +10,17 @@ import {
   CartesianGrid,
 } from "recharts";
 
-export default function AQITrendChart({ data }: any) {
-  const districts = [...new Set(data.map((d: any) => d.district))];
-
-  const years = [...new Set(data.map((d: any) => d.year))]
+export default function AQITrendChart({ data }: { data: any[] }) {
+  const districts: string[] = [
+  ...new Set(data.map((d: any) => d.district)),
+];
+  const years: number[] = [...new Set(data.map((d: any) => d.year))]
     .sort((a, b) => a - b);
 
-  const chartData = years.map((year) => {
+  const chartData: any[] = years.map((year: number) => {
     const row: any = { year };
 
-    districts.forEach((district) => {
+    districts.forEach((district: string) => {
       const record = data.find(
         (d: any) =>
           d.year === year &&
@@ -65,7 +66,7 @@ export default function AQITrendChart({ data }: any) {
           <Legend />
           <CartesianGrid strokeDasharray="3 3" />
 
-          {districts.map((district, index) => (
+          {districts.map((district: string, index: number) => (
             <Line
               key={district}
               type="monotone"
